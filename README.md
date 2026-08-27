@@ -53,7 +53,7 @@ building:    Honest Mistake (Layer 3) · Predictive Engine (strategy series)
 
 ## Work worth defending
 
-### 🔍 [Honest Mistake](https://github.com/sidharthjatt/honest-mistake) — a multi-layer ML audit agent
+### ① [Honest Mistake](https://github.com/sidharthjatt/honest-mistake) — a multi-layer ML audit agent
 Public credit-risk models report **0.90+ ROC-AUC**. Most of that is post-loan leakage.
 I stripped 41 leakage columns, rebuilt on a true temporal holdout, and landed at an
 **honest 0.7296 AUC / 0.4404 PR-AUC** with a generalization gap of `-0.002`.
@@ -70,7 +70,7 @@ Then I built an agent to audit the model automatically:
 
 ---
 
-### 📈 [Predictive Engine — S1](https://github.com/sidharthjatt/predictive-engine-s1) — quant backtest thesis
+### ② [Predictive Engine — S1](https://github.com/sidharthjatt/predictive-engine-s1) — quant backtest thesis
 A pre-registered systematic strategy ported to **NautilusTrader**, tested for the ways it could be wrong.
 
 - **Nifty100:** CAGR **25.36%**, Sharpe **1.88** (verified port)
@@ -82,7 +82,7 @@ A pre-registered systematic strategy ported to **NautilusTrader**, tested for th
 
 ---
 
-### 🎯 [RegretZero](https://github.com/sidharthjatt/regret-zero) — decision-regret inventory optimizer · [live demo](https://regret-zero.streamlit.app) (free-tier app sleeps when idle; ~20s to wake)
+### ⓷ [RegretZero](https://github.com/sidharthjatt/regret-zero) — decision-regret inventory optimizer · [live demo](https://regret-zero.streamlit.app) (free-tier app sleeps when idle; ~20s to wake)
 LightGBM **quantile** forecasting (P33 → P90, zero leakage) feeding a newsvendor optimizer framed around
 **decision regret** rather than forecast error. Measured **+12.3% cost improvement**. Streamlit cockpit is live.
 
