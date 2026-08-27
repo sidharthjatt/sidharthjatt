@@ -11,9 +11,8 @@
 
 <p>
   <a href="https://sidharthjatt.com"><img src="https://img.shields.io/badge/Portfolio-sidharthjatt.com-64FFDA?style=for-the-badge&labelColor=0A192F" /></a>
-  <a href="https://www.linkedin.com/in/YOUR-HANDLE"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&labelColor=0A192F" /></a>
-  <a href="mailto:YOUR-EMAIL"><img src="https://img.shields.io/badge/Email-Reach%20out-EA4335?style=for-the-badge&labelColor=0A192F" /></a>
-  <img src="https://komarev.com/ghpvc/?username=sidharthjatt&style=for-the-badge&color=64FFDA&label=PROFILE+VIEWS" />
+  <a href="https://www.linkedin.com/in/sidharthjatt"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&labelColor=0A192F" /></a>
+  <img src="https://komarev.com/ghpvc/?username=sidharthjatt&style=for-the-badge&color=0A192F&label=PROFILE+VIEWS" />
 </p>
 
 </div>
@@ -83,7 +82,7 @@ A pre-registered systematic strategy ported to **NautilusTrader**, tested for th
 
 ---
 
-### 🎯 [RegretZero](https://github.com/sidharthjatt/regret-zero) — decision-regret inventory optimizer · [live demo](https://regret-zero.streamlit.app)
+### 🎯 [RegretZero](https://github.com/sidharthjatt/regret-zero) — decision-regret inventory optimizer · [live demo](https://regret-zero.streamlit.app) (free-tier app sleeps when idle; ~20s to wake)
 LightGBM **quantile** forecasting (P33 → P90, zero leakage) feeding a newsvendor optimizer framed around
 **decision regret** rather than forecast error. Measured **+12.3% cost improvement**. Streamlit cockpit is live.
 
@@ -126,12 +125,10 @@ LightGBM **quantile** forecasting (P33 → P90, zero leakage) feeding a newsvend
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=sidharthjatt&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&title_color=64FFDA&icon_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
+<img height="165" src="https://github-stats-extended.vercel.app/api?username=sidharthjatt&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&title_color=64FFDA&icon_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
 <img height="165" src="https://streak-stats.demolab.com?user=sidharthjatt&hide_border=true&background=0A192F&stroke=64FFDA&ring=64FFDA&fire=FF6B6B&currStreakLabel=64FFDA&sideLabels=CCD6F6&dates=8892B0&currStreakNum=CCD6F6&sideNums=CCD6F6" />
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=sidharthjatt&bg_color=0A192F&color=CCD6F6&line=64FFDA&point=FFFFFF&area=true&hide_border=true" width="98%" />
-
-<img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sidharthjatt&layout=compact&langs_count=8&hide_border=true&title_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
+<img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=sidharthjatt&layout=compact&langs_count=8&hide_border=true&title_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
 
 </div>
 
