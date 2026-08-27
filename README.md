@@ -41,11 +41,11 @@ building:    Honest Mistake (Layer 3) · Predictive Engine (strategy series)
 
 | Repo | What it is | Stars | Last push | Latest commit |
 |---|---|---|---|---|
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 3 | 12 hours ago | `Add agent audit layer: tools, eval harness, and five run…` |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 3 | 13 hours ago | `Add agent audit layer: tools, eval harness, and five run…` |
 | [`predictive-engine-s1`](https://github.com/sidharthjatt/predictive-engine-s1) | quant backtest thesis (strategy 1) | ⭐ 2 | 7 hours ago | `Add README, known-issues log, and two published figures` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 3 | 1 month ago | `Expand findings with sensitivity and…` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 27 Aug 2026, 19:48 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 27 Aug 2026, 20:13 UTC</sub>
 
 <!--METRICS:END-->
 
