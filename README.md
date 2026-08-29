@@ -29,7 +29,7 @@ interesting result is usually the one that *fails* honestly instead of the one t
 role:        AI Builder — agentic systems, LLM tooling
 focus:       ReAct agents · evaluation & auditing · quant backtest infrastructure
 principle:   "A number you cannot defend is a number you do not have."
-building:    Honest Mistake (Layer 3) · Predictive Engine (strategy series)
+building:    Honest Mistake · Predictive Engine (strategy series)
 ```
 
 ---
