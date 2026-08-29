@@ -63,8 +63,10 @@ Then I built an agent to audit the model automatically:
 | Layer | What it does | Status |
 |---|---|---|
 | **L1 — Honest baseline** | Leakage-free feature set, temporal split, SHAP audit → 3 findings | ✅ Shipped |
-| **L2 — ReAct audit agent** | Raw ReAct loop (no LangChain), 5 read-only tools, 4 verdicts, JSONL tracing, planted-canary eval | ✅ Shipped |
+| **L2 — ReAct audit agent** | Raw ReAct loop (no framework), 8 read-only tools, 4 verdicts, JSONL tracing, 2 ablation switches, pgvector semantic retrieval over the data dictionary | ✅ Shipped |
 | **L3 — Runtime tool generation** | Capability-gap detection → tool-spec synthesis → sandboxed exec → known-answer validation → HITL checkpoint | 🚧 In progress |
+
+Four scored ablation runs: the planted column was caught in every canary configuration, and what varied between configurations was the false-positive count, not whether the leak was found. Numbers and limitations in [LAYER2_EVAL.md](https://github.com/sidharthjatt/honest-mistake/blob/main/outputs/agent_cache/LAYER2_EVAL.md).
 
 `Python` · `Anthropic API` · `XGBoost` · `SHAP` · raw ReAct, deliberately no framework
 
