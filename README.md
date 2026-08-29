@@ -45,7 +45,7 @@ building:    Honest Mistake (Layer 3) · Predictive Engine (strategy series)
 | [`predictive-engine-s1`](https://github.com/sidharthjatt/predictive-engine-s1) | quant backtest thesis (strategy 1) | ⭐ 2 | 1 day ago | `Add README, known-issues log, and two published figures` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 3 | 2 months ago | `Expand findings with sensitivity and…` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 28 Aug 2026, 21:46 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 29 Aug 2026, 05:54 UTC</sub>
 
 <!--METRICS:END-->
 
