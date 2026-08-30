@@ -20,7 +20,7 @@ USER = "sidharthjatt"
 # repo -> the one line you want shown next to it
 TRACKED = {
     "honest-mistake":      "multi-layer ML audit agent",
-    "predictive-engine-s1": "quant backtest thesis (strategy 1)",
+    "predictive-engine": "quant backtest thesis",
     "regret-zero":         "decision-regret inventory optimizer",
 }
 

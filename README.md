@@ -42,7 +42,7 @@ building:    Honest Mistake · Predictive Engine (strategy series)
 | Repo | What it is | Stars | Last push | Latest commit |
 |---|---|---|---|---|
 | [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 3 | 26 mins ago | `Layer 2: eight tools, pgvector retrieval, four scored…` |
-| [`predictive-engine-s1`](https://github.com/sidharthjatt/predictive-engine-s1) | quant backtest thesis (strategy 1) | ⭐ 2 | 1 day ago | `Add README, known-issues log, and two published figures` |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | quant backtest thesis | ⭐ 2 | 1 day ago | `Add README, known-issues log, and two published figures` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 3 | 2 months ago | `Expand findings with sensitivity and…` |
 
 <sub>Auto-refreshed by a GitHub Action · last run 29 Aug 2026, 10:31 UTC</sub>
@@ -72,7 +72,7 @@ Four scored ablation runs: the planted column was caught in every canary configu
 
 ---
 
-### ② [Predictive Engine — S1](https://github.com/sidharthjatt/predictive-engine-s1) — quant backtest thesis
+### ② [Predictive Engine](https://github.com/sidharthjatt/predictive-engine) — quant backtest thesis
 A pre-registered systematic strategy ported to **NautilusTrader**, tested for the ways it could be wrong.
 
 - **Nifty100:** CAGR **25.36%**, Sharpe **1.88** (verified port)
