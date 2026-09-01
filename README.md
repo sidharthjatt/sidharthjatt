@@ -12,7 +12,6 @@
 <p>
   <a href="https://sidharthjatt.com"><img src="https://img.shields.io/badge/Portfolio-sidharthjatt.com-64FFDA?style=for-the-badge&labelColor=0A192F" /></a>
   <a href="https://www.linkedin.com/in/sidharthjatt"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&labelColor=0A192F" /></a>
-  <img src="https://komarev.com/ghpvc/?username=sidharthjatt&style=for-the-badge&color=0A192F&label=PROFILE+VIEWS" />
 </p>
 
 </div>
