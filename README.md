@@ -40,11 +40,11 @@ building:    Honest Mistake · Predictive Engine (strategy series)
 
 | Repo | What it is | Stars | Last push | Latest commit |
 |---|---|---|---|---|
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 4 | 14 days ago | `Merge pull request #2 from…` |
-| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | quant backtest thesis | ⭐ 3 | 13 days ago | `Merge pull request #2 from…` |
-| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 4 | 2 months ago | `Expand findings with sensitivity and…` |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 14 days ago | `Merge pull request #2 from…` |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | quant backtest thesis | ⭐ 4 | 14 days ago | `Merge pull request #2 from…` |
+| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 5 | 2 months ago | `Expand findings with sensitivity and…` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 13 Sep 2026, 15:42 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 13 Sep 2026, 20:24 UTC</sub>
 
 <!--METRICS:END-->
 
