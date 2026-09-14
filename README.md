@@ -44,7 +44,7 @@ building:    Honest Mistake · Predictive Engine (strategy series)
 | [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | quant backtest thesis | ⭐ 4 | 14 days ago | `Merge pull request #2 from…` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 5 | 2 months ago | `Expand findings with sensitivity and…` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 13 Sep 2026, 20:24 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 14 Sep 2026, 03:40 UTC</sub>
 
 <!--METRICS:END-->
 
