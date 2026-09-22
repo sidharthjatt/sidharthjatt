@@ -40,11 +40,11 @@ building:    Honest Mistake · Predictive Engine (strategy series)
 
 | Repo | What it is | Stars | Last push | Latest commit |
 |---|---|---|---|---|
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 1 day ago | `Add DESIGN_PASS.md scoping the design pass` |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 2 days ago | `Add DESIGN_PASS.md scoping the design pass` |
 | [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | quant backtest thesis | ⭐ 4 | 2 days ago | `"regenerable with results/hash_58_engine_core.py" was…` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 5 | 3 days ago | `Fix machine reference order in README` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 22 Sep 2026, 03:36 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 22 Sep 2026, 11:03 UTC</sub>
 
 <!--METRICS:END-->
 
