@@ -19,9 +19,10 @@ USER = "sidharthjatt"
 
 # repo -> the one line you want shown next to it
 TRACKED = {
-    "honest-mistake":      "multi-layer ML audit agent",
-    "predictive-engine": "quant backtest thesis",
-    "regret-zero":         "decision-regret inventory optimizer",
+    "reasonable-doubt":  "contract-clause classifier on a CPU",
+    "honest-mistake":    "multi-layer ML audit agent",
+    "predictive-engine": "stock-ranking thesis, NSE",
+    "regret-zero":       "decision-regret inventory optimizer",
 }
 
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -102,7 +103,7 @@ def main():
         [
             START,
             "",
-            "| Repo | What it is | Stars | Last push | Latest commit |",
+            "| Repo | What it is | Stars | Last commit | Latest commit message |",
             "|---|---|---|---|---|",
             *rows,
             "",
