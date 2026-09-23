@@ -112,4 +112,4 @@ the cost of running short balances the cost of a leftover unit.
 
 <!--METRICS:END-->
 
-<sub>Every number on this page is copied from its repository, where the caveats sit right next to it.</sub>
+<sub>Every project number on this page is copied from that project's repository, where the caveats sit right next to it.</sub>
