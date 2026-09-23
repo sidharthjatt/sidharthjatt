@@ -1,188 +1,115 @@
-<div align="center">
+<h1 align="center">Sidharth Choudhary</h1>
 
-<!-- ============ HEADER (typing SVG, auto-animating) ============ -->
-<a href="https://sidharthjatt.com">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=3000&pause=900&color=64FFDA&center=true&vCenter=true&width=650&lines=Sidharth+Choudhary;AI+Builder+%7C+Agentic+Systems;IIT+Jodhpur+%C2%B7+Data+%26+Computational+Science" alt="Sidharth Choudhary" />
-</a>
-
-<p>
+<p align="center">
+  <b>AI Builder</b> · MSc–MTech, Data & Computational Science · IIT Jodhpur<br/>
   <em>I build AI systems, then I try to break them.</em>
 </p>
 
-<p>
+<p align="center">
   <a href="https://sidharthjatt.com"><img src="https://img.shields.io/badge/Portfolio-sidharthjatt.com-64FFDA?style=for-the-badge&labelColor=0A192F" /></a>
   <a href="https://www.linkedin.com/in/sidharthjatt"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&labelColor=0A192F" /></a>
 </p>
 
-</div>
+---
+
+I'm in the final year of a dual degree at IIT Jodhpur, in the Mathematics specialisation. I build agentic systems and
+quantitative research tooling, and I spend about as long trying to break them as building them.
+
+All four projects below are public, and each one says where it fails: a quantised model that returned
+chance-level answers without raising an error, a leak detector that only proves a floor, a trading edge that
+didn't survive its own re-runs. I'd rather show that than quote a number I can't defend.
+
+JAM 2023: top 1.2% of 13,333 candidates · Department rank 4
+
+## At a glance
+
+| Project | The question | What came out | Try it |
+|---|---|---|---|
+| [**Reasonable Doubt**](https://github.com/sidharthjatt/reasonable-doubt) | Can a small model sort contract clauses as well as a frontier LLM, for far less? | **0.8091** macro-F1 at **$0.00088** per 1,000 clauses. Claude Sonnet 5 zero-shot got 0.6148 at 496× the cost | [live demo](https://reasonable-doubt-111680840326.asia-south1.run.app) |
+| [**Honest Mistake**](https://github.com/sidharthjatt/honest-mistake) | What does a credit model score with the leakage removed, and can an agent find leaks without being told where to look? | Honest **0.7296** ROC-AUC. The agent caught a planted leak in every canary configuration | [run the audit](https://sidharthjatt.github.io/honest-mistake/scan.html) |
+| [**Predictive Engine**](https://github.com/sidharthjatt/predictive-engine) | Can a stock-ranking model survive real Indian market costs, and how would I know if it's luck? | Drawdown a little over half of buy & hold's. The return edge is *not* established, and the repo shows why | [experiment record](https://github.com/sidharthjatt/predictive-engine/blob/main/experiments/EXPERIMENTS.md) |
+| [**RegretZero**](https://github.com/sidharthjatt/regret-zero) | Why judge an inventory forecast on RMSE when running short and overstocking cost different amounts? | **£54,631 (12.0%)** less lost over 12 held-out weeks | [live demo](https://regret-zero.streamlit.app) |
 
 ---
 
-## The one-line version
+## The projects
 
-Final-year **MSc–MTech Dual Degree** at **IIT Jodhpur** (Data & Computational Science, Mathematics).
-I work on **agentic systems** and **quantitative research infrastructure**: agents that audit models,
-models that say when they're unsure, and a trading strategy I keep testing for the ways it could be fooling me.
-The interesting result is usually the one that *fails* honestly, not the one that looks good.
+### Reasonable Doubt: a contract-clause classifier that says when it isn't sure
 
-```yaml
-role:        AI Builder — agentic systems, LLM tooling
-focus:       ReAct agents · model auditing · cost-aware ML · quant backtest infrastructure
-principle:   "A number you cannot defend is a number you do not have."
-shipped:     Reasonable Doubt · Honest Mistake · RegretZero
-ongoing:     Predictive Engine (M.Tech thesis, strategy one of a series)
-```
+LEDGAR has about 80,000 contract provisions from SEC filings, labelled into 100 types. I planned a three-tier cascade
+and measured each tier before trusting it. Two of the three didn't earn their place, so what ships is one fine-tuned
+DeBERTa-v3 in ONNX, on a CPU, with a flag on answers it isn't sure about.
+
+- A QLoRA-tuned Qwen2.5-1.5B lost to the encoder. Sending the doubtful rows to Sonnet 5 moved macro-F1 by +0.0008, with a confidence interval across zero. Both tiers were dropped.
+- The INT8 build of the same weights scored **0.000166** on CPUs without AVX-512 VNNI. That's chance, and nothing raised an error. The service now classifies 200 fixed rows at startup and won't answer until they pass.
+- It still fails on text that isn't a contract: 10 of 20 unrelated paragraphs came back confident. That's in the [report](https://github.com/sidharthjatt/reasonable-doubt/blob/main/REPORT.md).
+
+<sub>DeBERTa-v3 · QLoRA · ONNX Runtime · FastAPI · Docker · Cloud Run · [model on Hugging Face](https://huggingface.co/sidharthjatt/reasonable-doubt-deberta-ledgar) · the demo scales to zero, so the first request can take about 2 minutes</sub>
+
+### Honest Mistake: a credit model built without leakage, and an agent that tries to catch it cheating
+
+Public models on the Lending Club data report AUCs above 0.90, mostly by reading columns written after the loan closed.
+I found and removed 41 of them in three passes (name patterns, the data dictionary, and asking why one column was
+almost always empty), then tested once on a year the model never saw.
+
+- **Layer 1, the model:** XGBoost on 1,061,042 loans. ROC-AUC 0.7296, PR-AUC 0.4404, and a validation-to-test gap of −0.0023.
+- **Layer 2, the agent:** a plain ReAct loop on the Anthropic API, no framework, with eight read-only tools and pgvector search over the data dictionary. The prompt never mentions leakage. Of twelve live runs, eight were usable, and in every run where a leaking column had been planted, the agent caught it. The planted column's description gives it away, though, so this proves a floor, not a ceiling.
+- **Layer 3, generated tools:** prompt caching cut input cost 71.1% on one measured run. One generated tool passed a sandbox and was admitted to a registry. Four planned parts were cut because nothing real was there to test them against. The [report](https://github.com/sidharthjatt/honest-mistake/blob/main/REPORT.md) says what that does and doesn't show.
+
+<sub>XGBoost · SHAP · Optuna · Anthropic API · pgvector · Postgres · [benchmark site](https://sidharthjatt.github.io/honest-mistake/) · the live audit runs on your own API key, which is never stored</sub>
+
+### Predictive Engine: a stock-ranking strategy for Indian markets (M.Tech thesis, ongoing)
+
+Every 20 trading days a 10-seed LightGBM ensemble ranks the universe. The top eight names are held, sized inverse to
+volatility, and the book is scaled by market breadth. Orders fill at the next open, with Zerodha's real charges and
+15 bps of slippage. Twenty-five ideas have been tested against it and one was accepted. Every rejection is kept, with
+the accept rule written before the run.
+
+- **What holds:** max drawdown of −21.87% against −38.65% for equal-weight buy & hold on Nifty 100, and −20.01% against −37.73% on MidCap150 (Jan 2019 to Jun 2026).
+- **What doesn't:** the strategy loses to its own basket on Nifty 100 and beats it on MidCap150, and re-runs on slightly perturbed prices flip that sign in both. So I don't quote the return edge as real.
+- **Verified port:** the execution path is ported to NautilusTrader and matches the research engine on 93 of 93 rebalances at zero tolerance. That proves bookkeeping and timing, not execution, because there's no order book.
+- **Still open:** survivorship bias. Index membership is today's list taken back to 2019, and point-in-time data only exists from March 2024.
+
+<sub>LightGBM · NautilusTrader · pandas · pre-registration</sub>
+
+### RegretZero: inventory ordering scored on money lost, not on forecast error
+
+Two years of transactions from a UK online giftware retailer. LightGBM predicts five demand quantiles directly, with a
+strict date split and rolling features shifted so no week sees itself. Each product then orders the quantile where
+the cost of running short balances the cost of a leftover unit.
+
+- Over 12 held-out weeks it lost **£54,631 less** than ordering the median forecast, a 12.0% saving, and all three price tiers came out ahead.
+- The P90 forecast covers 91.7% of actual demand against a 90% target.
+- The costs are assumptions, so they're sliders in the app. The saving holds until holding cost reaches about 26% of unit price per week, against a default of 10%.
+
+<sub>LightGBM · quantile regression · newsvendor optimisation · Streamlit</sub>
 
 ---
 
-## <!--PIN:START-->Live from my repos<!--PIN:END-->
+## How I work
+
+- **Rules before results.** An experiment's accept rule is written down before it runs. When a rule turns out wrong, the fix goes in as a dated amendment, not an edit.
+- **Failures stay in the record.** Dropped tiers, cut layers and rejected ideas are kept next to the ones that passed, with the numbers.
+- **Other people can check it.** Each project is public and either live or reproducible from a clean clone.
+
+**Tools I use most:** Python, SQL/PostgreSQL · PyTorch, Hugging Face, ONNX Runtime, XGBoost, LightGBM, SHAP · Anthropic API, pgvector · NautilusTrader, pandas · Docker, FastAPI, Cloud Run, GitHub Actions, Streamlit
+
+---
+
+## Recent work
 
 <!-- This block is rewritten automatically by .github/workflows/refresh.yml -->
 <!--METRICS:START-->
 
-| Repo | What it is | Stars | Last commit | Latest commit message |
-|---|---|---|---|---|
-| [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | ⭐ 4 | 3 days ago | `docs: note that section letter 3bo was never used` |
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 15 hours ago | `D26: decided after the design pass, not fixed` |
-| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | ⭐ 4 | 1 hour ago | `Record why the same-day assessment fix is kept` |
-| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 5 | 4 days ago | `Fix machine reference order in README` |
+| Repo | What it is | Commits, last 30 days | Last commit |
+|---|---|---:|---|
+| [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | — | — |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | — | — |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | — | — |
+| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | — | — |
 
-<sub>Auto-refreshed by a GitHub Action · last run 23 Sep 2026, 11:02 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · not yet run</sub>
 
 <!--METRICS:END-->
 
----
-
-## Work worth defending
-
-### ① [Reasonable Doubt](https://github.com/sidharthjatt/reasonable-doubt): a contract-clause classifier that says when it isn't sure
-[Live demo](https://reasonable-doubt-111680840326.asia-south1.run.app) (scales to zero, so the first request after a quiet spell takes about 2 minutes) · [model on Hugging Face](https://huggingface.co/sidharthjatt/reasonable-doubt-deberta-ledgar)
-
-Sorts a contract clause into one of LEDGAR's 100 provision types, on a CPU, for **$0.00088 per thousand**.
-Macro-F1 **0.8091** on 3,000 held-out clauses. Claude Sonnet 5 zero-shot scored 0.6148 on the same rows, at **496×** the cost.
-
-- I planned a three-tier cascade and measured each tier before trusting it. A QLoRA-tuned Qwen2.5-1.5B lost to the encoder. Sending the low-confidence rows to Sonnet 5 moved macro-F1 by +0.0008, with a confidence interval across zero. Both tiers were dropped. What ships is one DeBERTa-v3 in ONNX with a `needs_review` flag.
-- The INT8 build of the same weights scored **0.000166** on CPUs without AVX-512 VNNI. That's chance, and it raised no error. So the service classifies 200 fixed rows at startup and won't answer until they pass.
-- Where it fails: 10 of 20 non-contract paragraphs came back confident. A data-access policy got labelled `Records` at 99.9%. It's in the [report](https://github.com/sidharthjatt/reasonable-doubt/blob/main/REPORT.md).
-
-`DeBERTa-v3` · `ONNX Runtime` · `FastAPI` · `Docker` · `Cloud Run` · pre-registration
-
----
-
-### ② [Honest Mistake](https://github.com/sidharthjatt/honest-mistake): a multi-layer ML audit agent
-[Browse the benchmark](https://sidharthjatt.github.io/honest-mistake/) · [run the audit yourself](https://sidharthjatt.github.io/honest-mistake/scan.html) (your own Anthropic key, billed to you, never stored)
-
-Public credit-risk models on the Lending Club data report **0.90+ ROC-AUC**. Most of that is post-loan leakage.
-I stripped 41 leakage columns, rebuilt on a true temporal holdout, and landed at an
-**honest 0.7296 AUC / 0.4404 PR-AUC**. Validation-to-test gap: `−0.0023`.
-
-Then I built an agent to audit the model without being told what to look for:
-
-| Layer | What it does | Status |
-|---|---|---|
-| **L1: Honest baseline** | Leakage-free feature set, temporal split, SHAP audit with 3 findings | ✅ Shipped |
-| **L2: ReAct audit agent** | Raw ReAct loop (no framework), 8 read-only tools, 2 ablation switches, pgvector semantic search over the data dictionary | ✅ Shipped |
-| **L3: Runtime tool generation** | Prompt caching (input cost −71.1% on one measured run), a sandbox with a known-answer validator, a gap detector that was *not* accepted, and one generated tool admitted to a registry with its limits written down. Four planned parts (human-in-the-loop, judge + verifier, a format fix, an adversarial test) were cut because nothing real was there to test them against, and the chain never ran end to end. Closed with a [report](https://github.com/sidharthjatt/honest-mistake/blob/main/REPORT.md) of what it does and doesn't show | ✅ Closed |
-
-Twelve live runs, eight usable. I planted a leaking column as a canary and the agent caught it in every canary configuration.
-What changed between configurations was the false-positive count, not whether the leak was found.
-The canary's description gives it away, so this shows a floor, not a ceiling.
-Numbers and limitations are in [LAYER2_EVAL.md](https://github.com/sidharthjatt/honest-mistake/blob/main/outputs/agent_cache/LAYER2_EVAL.md) and [REPORT.md](https://github.com/sidharthjatt/honest-mistake/blob/main/REPORT.md).
-
-`Python` · `Anthropic API` · `XGBoost` · `SHAP` · `pgvector` · raw ReAct, deliberately no framework
-
----
-
-### ③ [Predictive Engine](https://github.com/sidharthjatt/predictive-engine): a stock-ranking strategy for Indian markets (M.Tech thesis)
-Every 20 trading days a 10-seed LightGBM ensemble ranks the universe. The top eight names are held, sized inverse to volatility,
-and the whole book is scaled by market breadth. Decisions are made on the close and filled at the next open, with Zerodha's
-real delivery charges and 15 bps of slippage. Strategy one of a planned series on the same data.
-
-- **Twenty-five ideas tested, one accepted** (holding eight names instead of twelve). Every rejection is in [`EXPERIMENTS.md`](https://github.com/sidharthjatt/predictive-engine/blob/main/experiments/EXPERIMENTS.md) with the accept rule written before the run.
-- **Drawdown is the part that holds.** Shipping arm max drawdown −21.87% against −38.65% for equal-weight buy & hold on Nifty 100, and −20.01% against −37.73% on MidCap150 (Jan 2019 to Jun 2026).
-- **The return edge doesn't, and I measured that.** The shipping arm loses to its own basket on Nifty 100 and beats it on MidCap150. Re-runs on slightly perturbed prices flip that sign in both universes, so neither sign is quoted as established.
-- **NautilusTrader port** matches the research engine on 93 of 93 rebalances at zero tolerance on both live universes. That proves bookkeeping and timing, not execution: there's no order book.
-- **Survivorship bias is unresolved.** Membership is today's index taken back to 2019. Point-in-time membership only exists from March 2024.
-
-`LightGBM` · `NautilusTrader` · `pandas` · pre-registration
-
----
-
-### ④ [RegretZero](https://github.com/sidharthjatt/regret-zero): a decision-regret inventory optimizer
-[Live demo](https://regret-zero.streamlit.app) (free-tier app sleeps when idle; about 30 seconds to wake)
-
-Two years of transactions from a UK online giftware retailer. LightGBM **quantile** forecasting (P33 to P90, strict date split,
-rolling features shifted so no week sees itself) feeds a newsvendor rule that orders for the cost of being wrong, not for forecast error.
-
-- Over 12 held-out weeks, it lost **£54,631 less** than ordering the median forecast: a **12.0%** saving. All three price tiers came out ahead.
-- The P90 forecast covers 91.7% of actual demand against a 90% target.
-- The costs are assumptions, so they're sliders in the app. The saving holds until holding cost reaches about 26% of unit price per week (default is 10%).
-
-`LightGBM` · quantile regression · newsvendor optimization · `Streamlit`
-
----
-
-## Stack
-
-<div align="center">
-
-**Languages & Core**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
-
-**AI / ML**
-
-![Anthropic](https://img.shields.io/badge/Anthropic_API-D97757?style=flat-square&logo=anthropic&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![Hugging Face](https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
-![ONNX](https://img.shields.io/badge/ONNX_Runtime-005CED?style=flat-square&logo=onnx&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-337AB7?style=flat-square)
-![LightGBM](https://img.shields.io/badge/LightGBM-9ACD32?style=flat-square)
-![SHAP](https://img.shields.io/badge/SHAP-1F77B4?style=flat-square)
-![pgvector](https://img.shields.io/badge/pgvector-336791?style=flat-square)
-
-**Quant**
-
-![NautilusTrader](https://img.shields.io/badge/NautilusTrader-0A192F?style=flat-square)
-![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white)
-
-**Infra & Tooling**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![Cloud Run](https://img.shields.io/badge/Cloud_Run-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white)
-
-</div>
-
----
-
-## The numbers
-
-<div align="center">
-
-<img height="165" src="https://github-stats-extended.vercel.app/api?username=sidharthjatt&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&title_color=64FFDA&icon_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
-<img height="165" src="https://streak-stats.demolab.com?user=sidharthjatt&hide_border=true&background=0A192F&stroke=64FFDA&ring=64FFDA&fire=FF6B6B&currStreakLabel=64FFDA&sideLabels=CCD6F6&dates=8892B0&currStreakNum=CCD6F6&sideNums=CCD6F6" />
-
-<img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=sidharthjatt&layout=compact&langs_count=8&hide_border=true&title_color=64FFDA&text_color=CCD6F6&bg_color=0A192F" />
-
-</div>
-
----
-
-## Contribution graph, eaten by a snake
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/sidharthjatt/sidharthjatt/output/snake.svg" alt="snake animation" />
-</div>
-
----
-
-<div align="center">
-  <sub>Every number on this page is copied from its repository, where the caveats sit right next to it.</sub>
-</div>
+<sub>Every number on this page is copied from its repository, where the caveats sit right next to it.</sub>

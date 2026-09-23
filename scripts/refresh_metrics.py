@@ -13,7 +13,7 @@ import re
 import sys
 import json
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 USER = "sidharthjatt"
 
@@ -60,17 +60,22 @@ def human_delta(iso_ts):
     return f"{months} month{'s' if months != 1 else ''} ago"
 
 
-SUBJECT_LIMIT = 58
+WINDOW_DAYS = 30
+MAX_PAGES = 20          # 100 commits a page; stops runaway paging
 
 
-def shorten(subject, limit=SUBJECT_LIMIT):
-    """Trim to the last whole word inside `limit` and mark it with an ellipsis."""
-    if len(subject) <= limit:
-        return subject
-    cut = subject[:limit].rstrip()
-    if " " in cut:
-        cut = cut[: cut.rindex(" ")].rstrip()
-    return f"{cut}\u2026"
+def count_recent_commits(repo):
+    """Commits on the default branch in the last WINDOW_DAYS. None if the API failed."""
+    since = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    total = 0
+    for page in range(1, MAX_PAGES + 1):
+        batch = api(f"/repos/{USER}/{repo}/commits?since={since}&per_page=100&page={page}")
+        if batch is None:
+            return None
+        total += len(batch)
+        if len(batch) < 100:
+            return total
+    return total
 
 
 def build_rows():
@@ -81,13 +86,13 @@ def build_rows():
         if not meta:
             continue
         last = "—"
-        msg = "—"
         if commits:
             last = human_delta(commits[0]["commit"]["committer"]["date"])
-            msg = shorten(commits[0]["commit"]["message"].splitlines()[0])
+        recent = count_recent_commits(repo)
+        recent = "—" if recent is None else str(recent)
         rows.append(
             f"| [`{repo}`](https://github.com/{USER}/{repo}) | {blurb} | "
-            f"⭐ {meta.get('stargazers_count', 0)} | {last} | `{msg}` |"
+            f"{recent} | {last} |"
         )
     return rows
 
@@ -103,8 +108,8 @@ def main():
         [
             START,
             "",
-            "| Repo | What it is | Stars | Last commit | Latest commit message |",
-            "|---|---|---|---|---|",
+            f"| Repo | What it is | Commits, last {WINDOW_DAYS} days | Last commit |",
+            "|---|---|---:|---|",
             *rows,
             "",
             f"<sub>Auto-refreshed by a GitHub Action · last run {stamp}</sub>",
