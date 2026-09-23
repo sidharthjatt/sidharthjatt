@@ -82,7 +82,7 @@ Then I built an agent to audit the model without being told what to look for:
 |---|---|---|
 | **L1: Honest baseline** | Leakage-free feature set, temporal split, SHAP audit with 3 findings | ✅ Shipped |
 | **L2: ReAct audit agent** | Raw ReAct loop (no framework), 8 read-only tools, 2 ablation switches, pgvector semantic search over the data dictionary | ✅ Shipped |
-| **L3: Runtime tool generation** | Prompt caching (input cost −71.1% on one measured run), a sandbox with a known-answer validator, a gap detector that was *not* accepted, and one generated tool admitted to a registry with its limits written down. The chain never ran end to end. Four planned parts were cut because nothing real was there to test them against | 🟡 Partly built |
+| **L3: Runtime tool generation** | Prompt caching (input cost −71.1% on one measured run), a sandbox with a known-answer validator, a gap detector that was *not* accepted, and one generated tool admitted to a registry with its limits written down. Four planned parts (human-in-the-loop, judge + verifier, a format fix, an adversarial test) were cut because nothing real was there to test them against, and the chain never ran end to end. Closed with a [report](https://github.com/sidharthjatt/honest-mistake/blob/main/REPORT.md) of what it does and doesn't show | ✅ Closed |
 
 Twelve live runs, eight usable. I planted a leaking column as a canary and the agent caught it in every canary configuration.
 What changed between configurations was the false-positive count, not whether the leak was found.
