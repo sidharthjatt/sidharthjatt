@@ -90,7 +90,7 @@ the cost of running short balances the cost of a leftover unit.
 
 - **Rules before results.** An experiment's accept rule is written down before it runs. When a rule turns out wrong, the fix goes in as a dated amendment, not an edit.
 - **Failures stay in the record.** Dropped tiers, cut layers and rejected ideas are kept next to the ones that passed, with the numbers.
-- **Other people can check it.** Each project is public and either live or reproducible from a clean clone.
+- **Other people can check it.** Each project is public. Three are live, and the fourth publishes its code, experiment record and results, though a rerun needs 396 MB of vendor price data that isn't in the repo.
 
 **Tools I use most:** Python, SQL/PostgreSQL · PyTorch, Hugging Face, ONNX Runtime, XGBoost, LightGBM, SHAP · Anthropic API, pgvector · NautilusTrader, pandas · Docker, FastAPI, Cloud Run, GitHub Actions, Streamlit
 
