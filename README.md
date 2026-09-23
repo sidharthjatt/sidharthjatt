@@ -104,11 +104,11 @@ the cost of running short balances the cost of a leftover unit.
 | Repo | What it is | Commits, last 30 days | Last commit |
 |---|---|---:|---|
 | [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | 141 | 3 days ago |
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | 93 | 15 hours ago |
-| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | 242 | 1 hour ago |
-| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | 14 | 4 days ago |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | 93 | 16 hours ago |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | 242 | 2 hours ago |
+| [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | 14 | 5 days ago |
 
-<sub>Auto-refreshed by a GitHub Action · last run 23 Sep 2026, 11:16 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 23 Sep 2026, 11:53 UTC</sub>
 
 <!--METRICS:END-->
 
