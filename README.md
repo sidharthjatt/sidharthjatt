@@ -42,12 +42,12 @@ ongoing:     Predictive Engine (M.Tech thesis, strategy one of a series)
 
 | Repo | What it is | Stars | Last commit | Latest commit message |
 |---|---|---|---|---|
-| [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | — | — | `docs: note that section letter 3bo was never used` |
-| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 8 hours ago | `D26: decided after the design pass, not fixed` |
-| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | ⭐ 4 | 6 hours ago | `Correct four statements that presumed the cap can only…` |
+| [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | ⭐ 4 | 3 days ago | `docs: note that section letter 3bo was never used` |
+| [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | ⭐ 5 | 15 hours ago | `D26: decided after the design pass, not fixed` |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | ⭐ 4 | 1 hour ago | `Record why the same-day assessment fix is kept` |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | ⭐ 5 | 4 days ago | `Fix machine reference order in README` |
 
-<sub>Auto-refreshed by a GitHub Action · last run 23 Sep 2026, 03:36 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 23 Sep 2026, 10:56 UTC</sub>
 
 <!--METRICS:END-->
 
