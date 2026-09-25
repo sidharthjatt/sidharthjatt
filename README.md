@@ -19,7 +19,7 @@ All four projects below are public, and each one says where it fails: a quantise
 chance-level answers without raising an error, a leak detector that only proves a floor, a trading edge that
 didn't survive its own re-runs. I'd rather show that than quote a number I can't defend.
 
-JAM 2023: top 1.2% of 13,333 candidates · Department rank 4
+JAM 2023: AIR 162 - top 1.2% of 13,333 candidates · Department rank 4 IIT Jodhpur
 
 ## At a glance
 
