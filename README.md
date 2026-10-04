@@ -105,10 +105,10 @@ the cost of running short balances the cost of a leftover unit.
 |---|---|---:|---|
 | [`reasonable-doubt`](https://github.com/sidharthjatt/reasonable-doubt) | contract-clause classifier on a CPU | 141 | 14 days ago |
 | [`honest-mistake`](https://github.com/sidharthjatt/honest-mistake) | multi-layer ML audit agent | 86 | 11 days ago |
-| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | 291 | 17 hours ago |
+| [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | 289 | 22 hours ago |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | 14 | 16 days ago |
 
-<sub>Auto-refreshed by a GitHub Action · last run 04 Oct 2026, 11:51 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 04 Oct 2026, 16:31 UTC</sub>
 
 <!--METRICS:END-->
 
