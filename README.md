@@ -108,7 +108,7 @@ the cost of running short balances the cost of a leftover unit.
 | [`predictive-engine`](https://github.com/sidharthjatt/predictive-engine) | stock-ranking thesis, NSE | 64 | 12 days ago |
 | [`regret-zero`](https://github.com/sidharthjatt/regret-zero) | decision-regret inventory optimizer | 0 | 1 month ago |
 
-<sub>Auto-refreshed by a GitHub Action · last run 10 Nov 2026, 01:13 UTC</sub>
+<sub>Auto-refreshed by a GitHub Action · last run 10 Nov 2026, 14:26 UTC</sub>
 
 <!--METRICS:END-->
 
